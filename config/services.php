@@ -35,4 +35,15 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'northstar' => [
+        'grant' => 'authorization_code',
+        'url' => env('NORTHSTAR_URL'),
+        'authorization_code' => [
+            'client_id' => env('NORTHSTAR_CLIENT_ID'),
+            'client_secret' => env('NORTHSTAR_CLIENT_SECRET'),
+            'scope' => ['user', 'role:staff', 'role:admin'],
+            'redirect_uri' => 'login',
+        ],
+    ]
+
 ];
