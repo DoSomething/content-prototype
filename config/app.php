@@ -168,6 +168,7 @@ return [
          */
         DoSomething\Gateway\Laravel\GatewayServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
         /*
          * Application Service Providers...
