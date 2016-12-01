@@ -10,7 +10,8 @@
         "intervention/image": "^2.3",
         "dosomething/gateway": "^1.0.0-rc15",
         "league/fractal": "^0.14.0",
-        "venturecraft/revisionable": "^1.28"
+        "venturecraft/revisionable": "^1.28",
+        "dimsav/laravel-translatable": "^6.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
