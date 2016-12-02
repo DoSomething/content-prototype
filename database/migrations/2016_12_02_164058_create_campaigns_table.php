@@ -17,9 +17,6 @@ class CreateCampaignsTable extends Migration
             $table->increments('id');
             $table->string('slug')->unique();
 
-            $table->string('title')->nullable();
-            $table->string('tagline')->nullable();
-
             $table->integer('time_commitment')->nullable();
             $table->boolean('staff_pick')->nullable();
 
@@ -46,7 +43,6 @@ class CreateCampaignsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('campaign_translations');
-
         Schema::dropIfExists('campaigns');
     }
 }

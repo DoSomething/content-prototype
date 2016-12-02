@@ -7,27 +7,41 @@ class CampaignTest extends TestCase
     /** @test */
     public function it_can_be_created()
     {
-        $campaign = Campaign::create([
+        Campaign::create([
             'title' => 'Some sample campaign',
             'slug' => 'sample-campaign',
         ]);
 
-        $this->seeInDatabase('campaigns', [
-            'title' => 'Some sample campaign'
+        $this->seeInDatabase('campaign_translations', [
+            'locale' => 'en',
+            'title' => 'Some sample campaign',
         ]);
     }
 
     /** @test */
-    public function it_can_be_translated()
+    public function it_can_be_translated_to_spanish()
     {
         $campaign = Campaign::create([
-            'title' => 'Some sample campaign',
-            'slug' => 'sample-campaign',
+            'slug' => 'teens-for-nami',
+            'en' => [
+                'title' => 'Teens for Nami',
+            ],
+            'es-MX' => [
+                'title' => 'Jovenes para Nami',
+            ],
         ]);
 
-        $campaign->translate('es')->title = 'Un exemplo de una campaña';
+        // It should default to English.
+        $this->assertEquals($campaign->title, 'Teens for Nami');
 
-        $this->assertEquals($campaign->translate('es')->title, 'Un exemplo de una campaña');
-        $this->assertEquals($campaign->translate('en')->title, 'Some sample campaign');
+        // And it should return the right translation when in Mexico!
+        app()->setLocale('es-MX');
+        $this->assertEquals($campaign->title, 'Jovenes para Nami');
+    }
+
+    /** @test */
+    public function it_should_track_revisions()
+    {
+
     }
 }
