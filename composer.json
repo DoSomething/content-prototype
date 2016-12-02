@@ -13,7 +13,8 @@
         "venturecraft/revisionable": "^1.28",
         "dimsav/laravel-translatable": "^6.0",
         "laravel/scout": "^1.1",
-        "algolia/algoliasearch-client-php": "^1.11"
+        "algolia/algoliasearch-client-php": "^1.11",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
