@@ -12,7 +12,7 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
     protected $baseUrl = 'http://localhost';
 
     /**
-     * Define hooks to migrate the database before and after each test.
+     * Setup the test environment.
      *
      * @return void
      */
@@ -21,8 +21,6 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
         parent::setUp();
 
         $this->artisan('migrate');
-
-        $this->app[Kernel::class]->setArtisan(null);
     }
 
     /**
