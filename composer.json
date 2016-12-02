@@ -11,7 +11,8 @@
         "dosomething/gateway": "^1.0.0-rc15",
         "league/fractal": "^0.14.0",
         "venturecraft/revisionable": "^1.28",
-        "dimsav/laravel-translatable": "^6.0"
+        "dimsav/laravel-translatable": "^6.0",
+        "doctrine/dbal": "v2.5.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
