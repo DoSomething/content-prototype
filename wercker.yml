@@ -1,0 +1,18 @@
+box: php
+
+build:
+  steps:
+    - install-packages:
+        packages: git
+    - script:
+        name: install composer
+        code: curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+    - script:
+        name: install dependencies
+        code: composer install --no-interaction
+    - script:
+        name: phpunit
+        code: |-
+          cp .env.example .env
+          php artisan key:generate
+          vendor/bin/phpunit
