@@ -9,6 +9,7 @@ class CampaignTest extends TestCase
     {
         $campaign = Campaign::create([
             'title' => 'Some sample campaign',
+            'slug' => 'sample-campaign',
         ]);
 
         $this->seeInDatabase('campaigns', [
@@ -16,11 +17,17 @@ class CampaignTest extends TestCase
         ]);
     }
 
-        /** @test */
-    public function it_works()
+    /** @test */
+    public function it_can_be_translated()
     {
-        $this->notSeeInDatabase('campaigns', [
-            'title' => 'Some sample campaign'
+        $campaign = Campaign::create([
+            'title' => 'Some sample campaign',
+            'slug' => 'sample-campaign',
         ]);
+
+        $campaign->translate('es')->title = 'Un exemplo de una campaña';
+
+        $this->assertEquals($campaign->translate('es')->title, 'Un exemplo de una campaña');
+        $this->assertEquals($campaign->translate('en')->title, 'Some sample campaign');
     }
 }
