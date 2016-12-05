@@ -14,9 +14,27 @@ class CreateCampaignsTable extends Migration
     public function up()
     {
         Schema::create('campaigns', function (Blueprint $table) {
+            // Campaign metadata and non-translatable content.
             $table->increments('id');
-            $table->string('title');
+            $table->string('slug')->unique();
+
+            $table->integer('time_commitment')->nullable();
+            $table->boolean('staff_pick')->nullable();
+
             $table->timestamps();
+        });
+
+        Schema::create('campaign_translations', function(Blueprint $table)
+        {
+            // Translatable campaign content.
+            $table->increments('id');
+            $table->integer('campaign_id')->unsigned();
+
+            $table->string('title')->nullable();;
+            $table->string('locale')->index();
+
+            $table->unique(['campaign_id','locale']);
+            $table->foreign('campaign_id')->references('id')->on('campaigns')->onDelete('cascade');
         });
     }
 
@@ -27,6 +45,7 @@ class CreateCampaignsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('campaign_translations');
         Schema::dropIfExists('campaigns');
     }
 }

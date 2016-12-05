@@ -166,6 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Dimsav\Translatable\TranslatableServiceProvider::class,
         DoSomething\Gateway\Laravel\GatewayServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
