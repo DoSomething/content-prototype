@@ -14,6 +14,7 @@ class CreateCampaignsTable extends Migration
     public function up()
     {
         Schema::create('campaigns', function (Blueprint $table) {
+            // Campaign metadata and non-translatable content.
             $table->increments('id');
             $table->string('slug')->unique();
 
@@ -25,8 +26,10 @@ class CreateCampaignsTable extends Migration
 
         Schema::create('campaign_translations', function(Blueprint $table)
         {
+            // Translatable campaign content.
             $table->increments('id');
             $table->integer('campaign_id')->unsigned();
+
             $table->string('title')->nullable();;
             $table->string('locale')->index();
 

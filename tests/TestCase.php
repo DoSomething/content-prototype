@@ -4,6 +4,8 @@ use Illuminate\Contracts\Console\Kernel;
 
 abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
+    use DatabaseSetup;
+
     /**
      * The base URL to use while testing the application.
      *
@@ -20,7 +22,8 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
     {
         parent::setUp();
 
-        $this->artisan('migrate');
+        // $this->artisan('migrate');
+        $this->setUpDatabase();
     }
 
     /**
